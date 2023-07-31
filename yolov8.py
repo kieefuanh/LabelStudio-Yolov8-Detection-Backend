@@ -85,10 +85,12 @@ class SignatureDetectionAPI(LabelStudioMLBase):
 
 		for i in completions:
 			# save image path for list of image path
-			filename = i['data']['image'].replace(LABELSTUDIO_PATH, image_folder)
+			data_image = i['data']['image']
+			filename = os.path.join(image_folder, os.path.basename(data_image))
 			fileext = os.path.splitext(filename)[-1]
 			if filename not in train_images:
-				shutil.copy(filename.replace(image_folder, DATASET_ROOT_DIR), filename)
+				shutil.copy(data_image.replace(LABELSTUDIO_PATH, DATASET_ROOT_DIR), filename)
+
 
 			# remove old label file
 			labelname = filename.replace('/images/', '/labels/').replace(fileext, '.txt')
