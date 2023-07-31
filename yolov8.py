@@ -93,6 +93,9 @@ class SignatureDetectionAPI(LabelStudioMLBase):
 
 
 			# remove old label file
+			label_cache = os.path.join(STORAGE_DIR, 'labels.cache')
+			if os.path.exists(label_cache):
+				os.remove(label_cache)
 			labelname = filename.replace('/images/', '/labels/').replace(fileext, '.txt')
 			if os.path.exists(labelname):
 				os.remove(labelname)
