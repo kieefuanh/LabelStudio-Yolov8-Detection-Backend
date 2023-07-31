@@ -1,0 +1,5 @@
+train: /home/kieu/Downloads/LabelStudio-Yolov8-Detection-Backend/data/images
+val: /home/kieu/Downloads/LabelStudio-Yolov8-Detection-Backend/data/images
+
+nc: 2
+names: ['table', 'signature']
